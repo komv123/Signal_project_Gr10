@@ -1,13 +1,13 @@
 %% This is the specification file for the assingnment project in 22051.
 % Use input signal or generated signal? Possible: wav, generate
-wav
+generate
 % WAV-filename
 inputsignal.wav
 % Target sampling frequency (Hz) of the .wav file
 10000
 % SIGNAL GENERATOR
 % Type of signal. Possible: rect, tone, tone-complex, noise
-tone
+noise
 % Sampling frequency (Hz)
 20000
 % Overall duration of the signal (in s)
