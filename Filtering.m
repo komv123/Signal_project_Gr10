@@ -10,7 +10,7 @@ type='bp';
 approx = 'butterworth';
 
 [B,A]=Filtergenerator(approx,order,type,freq,fs);
-impz(B,A,1e9);
+impz(B,A,1e6);
 
 T=1;
 t=1/fs:1/fs:T-1/fs;
