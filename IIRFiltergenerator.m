@@ -1,4 +1,4 @@
-function [B,A]=Filtergenerator(approx,order,type,freq,fs)
+function [B,A]=IIRFiltergenerator(approx,order,type,freq,fs)
 
        if approx(1,1:5) == 'cauer'
            [B,A]=Cauer(order,freq,fs,type)
