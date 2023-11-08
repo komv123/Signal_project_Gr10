@@ -1,28 +1,40 @@
-close all
-clear all
-clc
+function[filtered_signal]=Filtering(signal,specs)
 
 
-freq=[1000 3000];
-fs=20000;
-order=48;
-type='hp';
-approx = 'butterworth';
+    freq = specs.cut_off_frequency;
+    fs = specs.fs;
+    order = specs.filter_order;
+    type = specs.filter_type;
+    approx = specs.approximation_method;
 
-[B,A]=IIRFiltergenerator(approx,order,type,freq,fs);
-%[h,t]=impz(B,A,1e6);
-%plot(t,h)
+    % freq=[1000 3000];
+    % fs=20000;
+    % order=48;
+    % type='hp';
+    % approx = 'butterworth';
+    
+    [B,A]=IIRFiltergenerator(approx,order,type,freq,fs);
+    [h,t]=impz(B,A,100);
+    
 
-b=FIRFiltergenerator(order,type,freq,fs);
-freqz(b,1,[],fs)
+    %If we want an FIR, we have to do this :
 
+    IR = specs.filtering;
+    
+    
+    if(IR=='fir')
+        rect_window=[ones(40,1);zeros(length(h)-40,1)];
+        filterIR = h.*rect_window;
+        filtered_signal = conv(filterIR,signal);
 
+    end
+    
+    if(IR=='iir')
+        filtered_signal = conv(h,signal);
+    end
+  
 
-%xlim([0.1 0.11])
-
-
-
-%If we want an FIR, we have to do this :
+end
 
 
 

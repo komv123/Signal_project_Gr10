@@ -7,15 +7,15 @@ inputsignal.wav
 10000
 % SIGNAL GENERATOR
 % Type of signal. Possible: rect, tone, tone-complex, noise
-noise
+tone
 % Sampling frequency (Hz)
 20000
 % Overall duration of the signal (in s)
 4 
 % Periodicity (s) - only applicable for "rect". The width of each rectangle should be half the period. 
-0.5
+0.01
 % Frequency/-ies of the tone/tone complex (only first if 'tone')
-100 200 300 400 END
+3000 500 5000 END
 % FREQUENCY ANALYSIS
 % Spectral resolution (Hz)
 1
@@ -25,15 +25,15 @@ rect
 50
 % FILTERING
 % Use FIR or IIR?
-fir
+iir
 % filter order
-4
+20
 % Approximation method. Possible: butterworth, chebychevI, chebychevII, cauer
-butterworth
+cauer
 % type. Possible: lp, hp, bp, bs
-bp
+lp
 %cut-off frequency/-ies (Hz)
-1000, 4000
+4000 2500
 % PLOTTING
 % Limits of axis in time and spectrum.
 % xlim - time (s)

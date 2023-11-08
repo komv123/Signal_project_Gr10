@@ -47,13 +47,25 @@ else
 end
 
 
+%FILTERING AND PLOTTING OF INPUT SIGNAL AND FILTERED SIGNAL
+
 
 tvect = (1:length(signal))/str2double(specs{5});
+
+specs=specOpenV2('global_specs.txt');
+filtered_signal=Filtering(signal,specs);
+
 figure('Name', "test signal")
 plot(tvect,signal)
+hold on
+tvect2=(1:length(filtered_signal))/specs.fs;
+plot(tvect,filtered_signal(1:length(signal)))
 
 
-    
+xlim([tvect(100) tvect(200)])
+
+
+
 
 
 

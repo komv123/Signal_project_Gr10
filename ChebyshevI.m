@@ -11,14 +11,14 @@ function[B,A]=ChebyshevI(n,freq,fs,type)
     end
     
     if type == 'bp'  %Bandpass chevyshevI filter
-        [B,A]=cheby1(n,Rp,[fc1/(fs/2) fc2/(fs/2)])
+        [B,A]=cheby1(n,Rp,[fc1/(fs/2) fc2/(fs/2)]);
     end
     
     if type == 'hp'  %Highpass chebyshevI filter
-        [B,A]=cheby1(n,Rp,fc1/(fs/2),'high')
+        [B,A]=cheby1(n,Rp,fc1/(fs/2),'high');
     end
     
     if type == 'bs'  %Bandstop chebyshevI filter
-        [B,A]=cheby1(n,Rp,[fc1/(fs/2) fc2/(fs/2)],'stop')
+        [B,A]=cheby1(n,Rp,[fc1/(fs/2) fc2/(fs/2)],'stop');
     end
 end
