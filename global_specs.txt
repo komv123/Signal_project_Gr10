@@ -14,8 +14,8 @@ noise
 4 
 % Periodicity (s) - only applicable for "rect". The width of each rectangle should be half the period. 
 0.5
-% Frequency/-ies of the tone/tone complex (only first if 'tone'
-100, 200, 300, 400
+% Frequency/-ies of the tone/tone complex (only first if 'tone')
+100 200 300 400 END
 % FREQUENCY ANALYSIS
 % Spectral resolution (Hz)
 1

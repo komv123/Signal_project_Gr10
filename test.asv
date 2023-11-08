@@ -1,0 +1,13 @@
+clear all
+close all
+clc
+
+fs = 10000;
+freq = (1,2);
+t_tot = 2;
+
+signal = generate_tone_complex(fs, freq, t_tot);
+
+tvect = (1:length(signal))/fs;
+figure('Name', "test signal")
+plot(tvect,signal)

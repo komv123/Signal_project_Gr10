@@ -1,0 +1,5 @@
+function signal = generate_tone(fs, freq, t_tot)
+    t = (1)
+    signal = sin(2*pi*freq*t_tot);
+end
+

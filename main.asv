@@ -24,14 +24,9 @@ elseif strcmp(specs{1}, 'generate')
         %Complex-tone generator (samp_freq(Hz), freq(Hz) duration(s))
         for i = 8:100
             if strcmp(specs{i}, 'END')
-                break
-            end
-            freqs(i-7) = str2double(specs{i});
         end
-        signal = generate_tone_complex(str2double(specs{5}), freqs, str2double(specs{6}));
     elseif strcmp(specs{4}, 'noise')
         %Noise generator (samp_freq(Hz), duration(s))
-        signal = generate_noise(str2double(specs{5}), str2double(specs{6}));
     else
         error('SignalGenError:WrongType', ...
             ['Error while choosing signal type.\n' ...
