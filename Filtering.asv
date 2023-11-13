@@ -25,14 +25,14 @@ function[filtered_signal]=Filtering(signal,specs)
     
     
     if(IR=='fir')
-        [h,t]=impz(B,A);
+        [h,t]=impz(B,A,100);
         freqz(h,1,[],fs);
         filtered_signal = filter(h,1,signal);
 
     end
     
     if(IR=='iir')
-        freqz(B,A,[],fs)
+        fr
         filtered_signal = y;
     end
   

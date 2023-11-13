@@ -62,7 +62,7 @@ tvect2=(1:length(filtered_signal))/specs.fs;
 plot(tvect,filtered_signal(1:length(signal)))
 
 
-xlim([tvect(100) tvect(200)])
+xlim([tvect(1000) tvect(1300)])
 
 
 
