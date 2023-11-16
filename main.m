@@ -13,7 +13,6 @@ if strcmp(specs.task_type, 'wav')
     [signal, fs_y] = audioread(specs.wav_filename);
 elseif strcmp(specs.task_type, 'generate')
     %Choosing signal generator
-
     if strcmp(specs.signal_type, 'rect')
         %Rectangle generator (samp_freq(Hz), periodicity(s), duration(s))
         signal = generate_square(specs.fs, specs.periodicity_s, specs.signal_duration_s);

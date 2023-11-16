@@ -9,6 +9,7 @@ function signal = generate_square(fs, per, t_tot)
         signal(i) = period(ii);
         ii = ii + 1;
     end
+    signal
 end
 
 
