@@ -49,7 +49,7 @@ tvect = (1:length(signal))/specs.fs;
 filtered_signal=Filtering(signal,specs);
 
 figure('Name', "test signal")
-plot(tvect,signal(:,1))
+plot(tvect,signal)
 hold on
 tvect2=(1:length(filtered_signal))/specs.fs;
 plot(tvect,filtered_signal(1:length(signal)))
