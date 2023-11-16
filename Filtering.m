@@ -7,11 +7,6 @@ function[filtered_signal]=Filtering(signal,specs)
     type = specs.filter_type;
     approx = specs.approximation_method;
 
-    % freq=[1000 3000];
-    % fs=20000;
-    % order=48;
-    % type='hp';
-    % approx = 'butterworth';
     
     [B,A]=IIRFiltergenerator(approx,order,type,freq,fs);
     y=filter(B,A,signal);
