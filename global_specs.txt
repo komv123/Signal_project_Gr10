@@ -20,14 +20,14 @@ tone-complex
 % Spectral resolution (Hz)
 1
 % Window type for time frame DFT/STFT. Possible: hann, hamming, rect
-rect
+hamming
 % Overlap for STFT (%)
 50
 % FILTERING
 % Use FIR or IIR?
 fir
 % filter order
-4
+4                                
 % Approximation method. Possible: butterworth, chebychevI, chebychevII, cauer
 butterworth
 % type. Possible: lp, hp, bp, bs

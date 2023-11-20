@@ -39,10 +39,8 @@ else
         'Found: %s'], specs.task_type)
 end
 
-
+frequency_analyzer(signal, specs.fs, specs.spectral_resolution, specs.window_type, specs.stft_overlap);
 %FILTERING AND PLOTTING OF INPUT SIGNAL AND FILTERED SIGNAL
-
-
 tvect = (1:length(signal))/specs.fs;
 
 filtered_signal=Filtering(signal,specs);
