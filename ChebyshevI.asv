@@ -1,9 +1,0 @@
-
-fc=1000;
-fs=10000;
-n=10;
-Rp=10;
-
-if type == 'L'
-[B,A]=cheby1(n,Rp,fc/(fs/2));
-freqz(B,A,[],fs)

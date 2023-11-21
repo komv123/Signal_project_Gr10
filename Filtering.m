@@ -21,6 +21,7 @@ function[filtered_signal]=Filtering(signal,specs)
 
     if(IR=='fir')
         [h,t]=impz(B,A);
+        figure('name','Filter transfer function and phase')
         freqz(h,1,[],5000);
         filtered_signal = filter(h,1,signal);
 
@@ -29,6 +30,7 @@ function[filtered_signal]=Filtering(signal,specs)
     % or filter with iir filter
 
     if(IR=='iir')
+        figure('name','Filter transfer function and phase')
         freqz(B,A,[],fs)
         filtered_signal = y;
     end

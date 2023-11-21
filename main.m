@@ -39,17 +39,18 @@ else
         'Found: %s'], specs.task_type)
 end
 
-frequency_analyzer(signal, specs.fs, specs.spectral_resolution, specs.window_type, specs.stft_overlap);
+frequency_analysis(signal, specs.fs, specs.spectral_resolution, specs.window_type, specs.stft_overlap);
 %FILTERING AND PLOTTING OF INPUT SIGNAL AND FILTERED SIGNAL
 tvect = (1:length(signal))/specs.fs;
 
 filtered_signal=Filtering(signal,specs);
 
-figure('Name', "test signal")
+figure('Name', "test signal and filtered signal")
 plot(tvect,signal)
 hold on
 tvect2=(1:length(filtered_signal))/specs.fs;
 plot(tvect,filtered_signal(1:length(signal)))
+legend('Original signal','Filtered signal')
 
 
 xlim([tvect(1000) tvect(2000)])
