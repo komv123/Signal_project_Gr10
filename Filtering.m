@@ -8,30 +8,31 @@ function[filtered_signal]=Filtering(signal,specs)
     approx = specs.approximation_method;
 
     
+    %Generate the IIR filter 
+
     [B,A]=IIRFiltergenerator(approx,order,type,freq,fs);
     y=filter(B,A,signal);
 
 
-    
-
-    %If we want an FIR, we have to do this :
-
     IR = specs.filtering;
     
     
+    %Generate the fir filter and filter the signal
+
     if(IR=='fir')
         [h,t]=impz(B,A);
-        freqz(h,1,[],fs);
+        freqz(h,1,[],5000);
         filtered_signal = filter(h,1,signal);
 
     end
     
+    % or filter with iir filter
+
     if(IR=='iir')
         freqz(B,A,[],fs)
         filtered_signal = y;
     end
   
-
 end
 
 

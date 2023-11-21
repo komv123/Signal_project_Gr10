@@ -1,5 +1,7 @@
 function [B,A]=IIRFiltergenerator(approx,order,type,freq,fs)
 
+       %Generate a filter following the approximation asked in the specs
+
        if approx(1,1:5) == 'cauer'
            [B,A]=Cauer(order,freq,fs,type);
            return

@@ -29,11 +29,11 @@ fir
 % filter order
 4
 % Approximation method. Possible: butterworth, chebychevI, chebychevII, cauer
-butterworth
+cauer
 % type. Possible: lp, hp, bp, bs
-hp
+bs
 %cut-off frequency/-ies (Hz)
-2000
+1500 3500
 % PLOTTING
 % Limits of axis in time and spectrum.
 % xlim - time (s)
