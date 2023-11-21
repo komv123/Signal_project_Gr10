@@ -8,7 +8,7 @@ truncation_time = T/2; % DOF : i chose to just to cut at half of the signal
 
 if window =="rect"
    [trunc_t, windowed_signal] = rect_window(signal, truncation_time, truncation_time, fs);
-
+    
 end
 
 if window=="hann"
@@ -16,7 +16,7 @@ if window=="hann"
 end 
 
 if window=="hamming"
-[trunc_t, windowed_signal] = hamming_window(signal, truncatio_time, T, fs);
+[trunc_t, windowed_signal] = hamming_window(signal, truncation_time, T, fs);
 end 
 
 % plot the truncated signal
