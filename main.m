@@ -40,7 +40,6 @@ else
 end
 
 %FREQUENCY ANALYSIS
-
 frequency_analysis(signal, specs.fs, specs.spectral_resolution, ...
     specs.window_type, specs.stft_overlap, specs.x_lim_frequency, ...
     specs.y_lim_au,specs.x_axis_type,specs.y_axis_type);
@@ -65,6 +64,12 @@ xlim([0 specs.x_lim_time])
 ylim([0 specs.y_lim_amplitude])
 saveas(gcf,'Input signal and filtered signal.pdf');
 
+%Save to CSV
+csv_matrix = [transpose(signal), transpose(filtered_signal)];
+csv_matrix = array2table(csv_matrix);
+csv_matrix.Properties.VariableNames(1:2) = {'Signal', 'Filtered signal'};
+writetable(csv_matrix, 'out.csv');
+clear csv_matrix
 
 
 
