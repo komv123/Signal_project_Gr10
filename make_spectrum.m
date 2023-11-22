@@ -1,7 +1,16 @@
-function [X, freq] = make_spectrum(n, fs)
+function [X, freq] = make_spectrum(n, fs, x_lim_frequency, ...
+    y_lim_au, x_axis_type, y_axis_type)
+
+
+if x_lim_frequency=='nyquist'
+    Fmax=fs/2;
+else
+    Fmax=str2num(x_lim_frequency);
+end
+
 T0 = length(n)/fs; 
 delta_f = 1/T0;   % spectrum resolution directly depends on duration
-disp(delta_f)
+
 
 % frequency axis with respect to spectrum resolution 
 freq = 0:delta_f:fs-delta_f;
@@ -11,12 +20,33 @@ X = fft(n);
 
 
 figure('Name', 'Spectrum of signal'); 
-%1. Magnitude spectrum 
-stem(freq, abs(X));
-xlabel('frequecy / Hz');
+%1. Magnitude spectrum plot
+if x_axis_type=='lin'
+    if y_axis_type=='lin'
+        stem(freq, abs(X));
+    end
+    if y_axis_type=='log'
+        stem(freq,abs(X))
+        set(gca,'yscale','log')
+    end
+end
+if x_axis_type == 'log'
+    if y_axis_type=='lin'
+        stem(freq, abs(X));
+        set(gca,'xscale','log')
+    end
+    if y_axis_type=='log'
+        stem(freq,abs(X))
+        set(gca,'yscale','log')
+        set(gca,'xscale','log')
+    end
+end
+       
 ylabel('magnitude'); 
-xlim([0 fs/2]);
+xlim([0 Fmax]);
+ylim([0 y_lim_au]);
 title('Magnitude Spectrum (Fourier Transform)');
+saveas(gcf,['Input signal spectrum.pdf']);
 
 % % 1.2 Magnitude on logarithmic scale in dB
 % subplot(2,2,2)

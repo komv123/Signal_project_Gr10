@@ -11,18 +11,22 @@ function[filtered_signal]=Filtering(signal,specs)
     %Generate the IIR filter 
 
     [B,A]=IIRFiltergenerator(approx,order,type,freq,fs);
+    figure('name','Pole/zero diagram')
+    zplane(B,A);
+    saveas(gcf,'Pole zero diagram.pdf');
     y=filter(B,A,signal);
 
 
     IR = specs.filtering;
     
     
-    %Generate the fir filter and filter the signal
+    %Generate and plot the fir filter and filter the signal
 
     if(IR=='fir')
         [h,t]=impz(B,A);
         figure('name','Filter transfer function and phase')
-        freqz(h,1,[],5000);
+        freqz(h,1,[],fs);
+        saveas(gcf,'Filter magnitude and phase.pdf');
         filtered_signal = filter(h,1,signal);
 
     end
@@ -32,6 +36,7 @@ function[filtered_signal]=Filtering(signal,specs)
     if(IR=='iir')
         figure('name','Filter transfer function and phase')
         freqz(B,A,[],fs)
+        saveas(gcf,'Filter magnitude and phase.pdf');
         filtered_signal = y;
     end
   

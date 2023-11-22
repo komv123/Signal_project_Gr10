@@ -28,6 +28,7 @@ ylabel('Frequency (Hz)');
 colorbar;
 
 colormap('jet');
+saveas(gcf,['Input signal STFT.pdf']);
 
 
 end

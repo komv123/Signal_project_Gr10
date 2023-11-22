@@ -1,4 +1,5 @@
-function [signal, signal_padded] = frequency_analysis(signal, fs, resol, window, overlap_percent)
+function [signal, signal_padded] = frequency_analysis(signal, fs, resol, ...
+    window, overlap_percent,x_lim_frequency, y_lim_au, x_axis_type, y_axis_type)
 
 %% 1. Frequency resolution and then DFT => done via zero padding
 
@@ -6,7 +7,8 @@ n = fs/resol; % gives the length of signal to get the desired spectral resolutio
 signal_padded = zero_padding(signal, n);
 
 
-[X, frequencies] = make_spectrum(signal_padded, fs);
+[X, frequencies] = make_spectrum(signal_padded, fs, x_lim_frequency, ...
+    y_lim_au, x_axis_type, y_axis_type);
 
 %% 2. STFT : from window type, overlap and frequency resolution => dedude other parameters
 

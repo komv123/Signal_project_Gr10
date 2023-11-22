@@ -39,21 +39,31 @@ else
         'Found: %s'], specs.task_type)
 end
 
-frequency_analysis(signal, specs.fs, specs.spectral_resolution, specs.window_type, specs.stft_overlap);
+%FREQUENCY ANALYSIS
+
+frequency_analysis(signal, specs.fs, specs.spectral_resolution, ...
+    specs.window_type, specs.stft_overlap, specs.x_lim_frequency, ...
+    specs.y_lim_au,specs.x_axis_type,specs.y_axis_type);
+
+
 %FILTERING AND PLOTTING OF INPUT SIGNAL AND FILTERED SIGNAL
-tvect = (1:length(signal))/specs.fs;
+
 
 filtered_signal=Filtering(signal,specs);
+
+tvect = (1:length(signal))/specs.fs;
+tvect2=(1:length(filtered_signal))/specs.fs;
 
 figure('Name', "test signal and filtered signal")
 plot(tvect,signal)
 hold on
-tvect2=(1:length(filtered_signal))/specs.fs;
 plot(tvect,filtered_signal(1:length(signal)))
 legend('Original signal','Filtered signal')
 
 
-xlim([tvect(1000) tvect(2000)])
+xlim([0 specs.x_lim_time])
+ylim([0 specs.y_lim_amplitude])
+saveas(gcf,'Input signal and filtered signal.pdf');
 
 
 
