@@ -1,6 +1,6 @@
 %% This is the specification file for the assingnment project in 22051.
 % Use input signal or generated signal? Possible: wav, generate
-generate
+wav
 % WAV-filename
 inputsignal.wav
 % Target sampling frequency (Hz) of the .wav file
