@@ -39,7 +39,7 @@ lp
 % xlim - time (s)
 0.01
 % ylim - amplitude (a.u.)
-1
+0.0005
 % frequency on linear or log axis?
 % log in x? Possible: lin, log
 log
