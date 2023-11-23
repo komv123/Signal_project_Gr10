@@ -10,7 +10,20 @@ specs=specOpenV2('global_specs.txt');
 
 if strcmp(specs.task_type, 'wav')
     %Opening wav file
-    [signal, fs_y] = audioread(specs.wav_filename);
+    [raw, fs_y] = audioread(specs.wav_filename);
+
+    %If mono, copy to signal
+    if size(raw,2) == 1
+        signal = transpose(raw);
+    %If stereo, average the chanels
+    else
+        signal = zeros(1,size(raw,1));
+        for i = 1:length(signal)
+            signal(i) = mean(abs(raw(i,:)));
+        end
+    end
+    specs.fs = specs.wav_fs;
+    clear raw
 elseif strcmp(specs.task_type, 'generate')
     %Choosing signal generator
     if strcmp(specs.signal_type, 'rect')
