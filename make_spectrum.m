@@ -19,7 +19,7 @@ freq = 0:delta_f:fs-delta_f;
 X = fft(n);
 
 
-figure;
+figure('name','Frequency magnitude and phase');
 subplot(2,1,1)
 
 %1. Magnitude spectrum plot
@@ -46,7 +46,7 @@ end
        
 ylabel('magnitude'); 
 xlim([0 Fmax]);
-ylim([0 y_lim_au]);
+ylim([1 y_lim_au]);
 title('Magnitude Spectrum (Fourier Transform)');
 
 %  2. Phase spectrum
@@ -59,7 +59,7 @@ title('Phase Spectrum (Fourier Transform)');
 saveas(gcf,['Input signal frequency magnitude and phase.pdf']);
 
 % 3. Real part spectrum 
-figure
+figure('name','Real and imaginary part of spectrum')
 subplot(2,1,1)
 stem(freq, real(X)); 
 xlabel('frequecy / Hz');

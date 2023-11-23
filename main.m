@@ -61,7 +61,7 @@ legend('Original signal','Filtered signal')
 
 
 xlim([0 specs.x_lim_time])
-ylim([0 specs.y_lim_amplitude])
+ylim([-specs.y_lim_amplitude specs.y_lim_amplitude])
 saveas(gcf,'Input signal and filtered signal.pdf');
 
 %Save to CSV
