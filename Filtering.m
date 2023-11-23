@@ -1,4 +1,4 @@
-function[filtered_signal]=Filtering(signal,specs)
+function[filtered_signal, B, A]=Filtering(signal,specs)
 
 
     freq = specs.cut_off_frequency;

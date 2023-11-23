@@ -40,7 +40,7 @@ else
 end
 
 %FREQUENCY ANALYSIS
-frequency_analysis(signal, specs.fs, specs.spectral_resolution, ...
+[X, frequencies] = frequency_analysis(signal, specs.fs, specs.spectral_resolution, ...
     specs.window_type, specs.stft_overlap, specs.x_lim_frequency, ...
     specs.y_lim_au,specs.x_axis_type,specs.y_axis_type);
 
@@ -48,7 +48,7 @@ frequency_analysis(signal, specs.fs, specs.spectral_resolution, ...
 %FILTERING AND PLOTTING OF INPUT SIGNAL AND FILTERED SIGNAL
 
 
-filtered_signal=Filtering(signal,specs);
+[filtered_signal, B, A] = Filtering(signal,specs);
 
 tvect = (1:length(signal))/specs.fs;
 tvect2=(1:length(filtered_signal))/specs.fs;
@@ -65,11 +65,21 @@ ylim([0 specs.y_lim_amplitude])
 saveas(gcf,'Input signal and filtered signal.pdf');
 
 %Save to CSV
-csv_matrix = [transpose(signal), transpose(filtered_signal)];
+csv_matrix = nan(length(signal),6);
+csv_matrix(1:length(signal),1)          = transpose(signal);
+csv_matrix(1:length(frequencies),2)     = transpose(frequencies);
+csv_matrix(1:length(X),3)               = transpose(X);
+csv_matrix(1:length(filtered_signal),4) = transpose(filtered_signal);
+csv_matrix(1:length(B),5)               = transpose(B);
+csv_matrix(1:length(A),6)               = transpose(A);
 csv_matrix = array2table(csv_matrix);
-csv_matrix.Properties.VariableNames(1:2) = {'Signal', 'Filtered signal'};
+csv_matrix.Properties.VariableNames(1:6) = {'Signal', 'Frequencies', 'Magnitude', 'Filtered signal', 'Feedback coefficients', 'Feedforward coefficients'};
 writetable(csv_matrix, 'out.csv');
 clear csv_matrix
+
+%Save to TXT
+%T = table(transpose(signal), transpose(B), 'VariableNames', {'signal', 'B'});
+%writetable(T, 'out.txt');
 
 
 
